@@ -1,0 +1,81 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-background, #f8fafc);
+  padding: 2rem;
+}
+.content {
+  max-width: 28rem;
+  width: 100%;
+  text-align: center;
+}
+.icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text, #1e293b);
+  margin: 0 0 0.75rem;
+}
+.message {
+  font-size: 1rem;
+  color: var(--color-text-muted, #64748b);
+  margin: 0 0 1.5rem;
+  line-height: 1.5;
+}
+.details {
+  margin: 0 0 1.5rem;
+  text-align: left;
+}
+.details summary {
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: var(--color-text-muted, #64748b);
+}
+.stack {
+  font-size: 0.75rem;
+  background-color: #1e293b;
+  color: #e2e8f0;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow: auto;
+  max-height: 15rem;
+  margin-top: 0.75rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.primaryAction {
+  padding: 0.625rem 1.25rem;
+  background-color: var(--color-primary, #2563eb);
+  color: white;
+  border: none;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+.primaryAction:hover {
+  background-color: var(--color-primary-hover, #1d4ed8);
+}
+.secondaryAction {
+  padding: 0.625rem 1.25rem;
+  background-color: transparent;
+  color: var(--color-text-muted, #64748b);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+.secondaryAction:hover {
+  background-color: var(--color-surface-hover, #f1f5f9);
+}

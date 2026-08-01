@@ -1,0 +1,124 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: none;
+  border-radius: var(--radius-md, 0.375rem);
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    box-shadow 0.15s ease,
+    opacity 0.15s ease;
+  white-space: nowrap;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  outline: none;
+}
+
+.button:focus-visible {
+  box-shadow: 0 0 0 3px var(--color-focus-ring, rgba(59, 130, 246, 0.5));
+}
+
+.button:disabled,
+.button[aria-disabled='true'] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Variants */
+.primary {
+  background-color: var(--color-primary, #2563eb);
+  color: var(--color-on-primary, #ffffff);
+}
+.primary:hover:not(:disabled) {
+  background-color: var(--color-primary-hover, #1d4ed8);
+}
+
+.secondary {
+  background-color: var(--color-surface, #f8fafc);
+  color: var(--color-text, #1e293b);
+  border: 1px solid var(--color-border, #e2e8f0);
+}
+.secondary:hover:not(:disabled) {
+  background-color: var(--color-surface-hover, #f1f5f9);
+}
+
+.danger {
+  background-color: var(--color-danger, #dc2626);
+  color: #ffffff;
+}
+.danger:hover:not(:disabled) {
+  background-color: var(--color-danger-hover, #b91c1c);
+}
+
+.ghost {
+  background-color: transparent;
+  color: var(--color-primary, #2563eb);
+}
+.ghost:hover:not(:disabled) {
+  background-color: var(--color-primary-ghost, rgba(37, 99, 235, 0.08));
+}
+
+.link {
+  background-color: transparent;
+  color: var(--color-primary, #2563eb);
+  text-decoration: underline;
+  padding: 0;
+}
+
+/* Sizes */
+.sm {
+  padding: 0.375rem 0.75rem;
+  font-size: 0.8125rem;
+  height: 2rem;
+}
+.md {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  height: 2.5rem;
+}
+.lg {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  height: 3rem;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+/* Loading spinner */
+.spinner {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.iconLeft,
+.iconRight {
+  display: inline-flex;
+  align-items: center;
+  font-size: 1.1em;
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+}

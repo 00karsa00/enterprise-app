@@ -1,0 +1,37 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.checkbox {
+  width: 1rem;
+  height: 1rem;
+  accent-color: var(--color-primary, #2563eb);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.checkbox:disabled {
+  cursor: not-allowed;
+}
+.label {
+  font-size: 0.875rem;
+  color: var(--color-text, #1e293b);
+  cursor: pointer;
+  user-select: none;
+}
+.hint {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted, #64748b);
+  margin: 0;
+  padding-left: 1.5rem;
+}
+.error {
+  font-size: 0.8125rem;
+  color: var(--color-danger, #dc2626);
+  margin: 0;
+}

@@ -22,7 +22,7 @@ import styles from './LoginPage.module.css';
 export function LoginPage() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { login, isLoading, error, clearError } = useAuth();
+  const { login, isLoading, error } = useAuth();
 
   // Redirect back to the page that required auth, or fallback to dashboard
   const from =
@@ -58,7 +58,7 @@ export function LoginPage() {
 
         <section id="login-form">
           <LoginForm
-            onSubmit={handleSubmit}
+            onSubmit={(data) => { void handleSubmit(data); }}
             isLoading={isLoading}
             errorMessage={error}
             forgotPasswordHref={ROUTES.FORGOT_PASSWORD}

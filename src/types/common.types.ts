@@ -42,7 +42,7 @@ export interface PaginationParams {
 
 /** Paginated response envelope */
 export interface PaginatedResponse<T> {
-  data: T[];
+  items: T[];
   total: number;
   page: number;
   pageSize: number;

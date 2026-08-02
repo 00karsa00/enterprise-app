@@ -6,19 +6,24 @@ const BASE = apiConfig.baseUrl;
 export const authHandlers = [
   http.post(`${BASE}/auth/login`, () => {
     return HttpResponse.json({
-      user: {
-        id: 'user-1',
-        email: 'admin@company.com',
-        firstName: 'Admin',
-        lastName: 'User',
-        roles: ['admin'],
-        permissions: ['employee:read', 'employee:create', 'employee:update', 'employee:delete'],
-      },
-      tokens: {
+      success: true,
+      data: {
         accessToken: 'mock-access-token',
-        refreshToken: 'mock-refresh-token',
-        expiresAt: Date.now() + 3600000,
+        expiresIn: 900,
         tokenType: 'Bearer',
+        admin: {
+          id: 1,
+          firstName: 'Super',
+          lastName: 'Admin',
+          email: 'admin@techcorp.in',
+          role: 'super_admin',
+          isActive: true,
+          lastLoginAt: new Date().toISOString(),
+        },
+      },
+      meta: {
+        timestamp: new Date().toISOString(),
+        version: '1.0.0',
       },
     });
   }),
@@ -29,12 +34,20 @@ export const authHandlers = [
 
   http.get(`${BASE}/auth/me`, () => {
     return HttpResponse.json({
-      id: 'user-1',
-      email: 'admin@company.com',
-      firstName: 'Admin',
-      lastName: 'User',
-      roles: ['admin'],
-      permissions: ['employee:read'],
+      success: true,
+      data: {
+        id: 1,
+        firstName: 'Super',
+        lastName: 'Admin',
+        email: 'admin@techcorp.in',
+        role: 'super_admin',
+        isActive: true,
+        lastLoginAt: new Date().toISOString(),
+      },
+      meta: {
+        timestamp: new Date().toISOString(),
+        version: '1.0.0',
+      },
     });
   }),
 ];

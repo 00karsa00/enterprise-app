@@ -25,15 +25,44 @@ import type {
 
 import type { IEmployeeRepository } from './IEmployeeRepository';
 
+/** Shape of the raw paginated envelope returned by the API. */
+interface ApiPaginatedEnvelope<T> {
+  items: T[];
+  total: number;
+  page: number;
+  limit: number;
+  totalPages: number;
+  hasNext: boolean;
+  hasPrev: boolean;
+}
+
+/** Top-level API success wrapper: { success, data: <payload>, meta } */
+interface ApiSuccessResponse<T> {
+  success: boolean;
+  data: T;
+}
+
+/** Maps the API paginated envelope to the frontend PaginatedResponse shape. */
+function mapPaginated<T>(envelope: ApiPaginatedEnvelope<T>): PaginatedResponse<T> {
+  return {
+    items: envelope.items,
+    total: envelope.total,
+    page: envelope.page,
+    pageSize: envelope.limit,
+    totalPages: envelope.totalPages,
+    hasNextPage: envelope.hasNext,
+    hasPreviousPage: envelope.hasPrev,
+  };
+}
 
 export class EmployeeRepository implements IEmployeeRepository {
   async findAll(filters: EmployeeFilters): Promise<PaginatedResponse<Employee>> {
-    const response = await httpClient.get<PaginatedResponse<Employee>>(
+    const response = await httpClient.get<ApiSuccessResponse<ApiPaginatedEnvelope<Employee>>>(
       endpoints.employees.list,
       {
         params: {
           page: filters.page,
-          pageSize: filters.pageSize,
+          limit: filters.pageSize,   // API expects "limit", not "pageSize"
           search: filters.search,
           departmentId: filters.departmentId,
           status: filters.status,
@@ -44,33 +73,33 @@ export class EmployeeRepository implements IEmployeeRepository {
         },
       },
     );
-    return response.data;
+    return mapPaginated(response.data.data);
   }
 
   async findById(id: string | number): Promise<Employee> {
-    const response = await httpClient.get<Employee>(
+    const response = await httpClient.get<ApiSuccessResponse<Employee>>(
       endpoints.employees.byId(id),
     );
-    return response.data;
+    return response.data.data;
   }
 
   async create(data: CreateEmployeeDto): Promise<Employee> {
-    const response = await httpClient.post<Employee>(
+    const response = await httpClient.post<ApiSuccessResponse<Employee>>(
       endpoints.employees.create,
       data,
     );
-    return response.data;
+    return response.data.data;
   }
 
   async update(
     id: string | number,
     data: UpdateEmployeeDto,
   ): Promise<Employee> {
-    const response = await httpClient.patch<Employee>(
+    const response = await httpClient.patch<ApiSuccessResponse<Employee>>(
       endpoints.employees.update(id),
       data,
     );
-    return response.data;
+    return response.data.data;
   }
 
   async delete(id: string | number): Promise<void> {

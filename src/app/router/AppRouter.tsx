@@ -53,6 +53,45 @@ const EmployeeDetailPage = lazy(() =>
   })),
 );
 
+// Organisation module
+const CompanyListPage = lazy(() =>
+  import('@modules/organisation/pages/CompanyListPage').then((m) => ({
+    default: m.CompanyListPage,
+  })),
+);
+
+const DepartmentListPage = lazy(() =>
+  import('@modules/organisation/pages/DepartmentListPage').then((m) => ({
+    default: m.DepartmentListPage,
+  })),
+);
+
+// Leave module
+const LeaveTypesPage = lazy(() =>
+  import('@modules/leave/pages/LeaveTypesPage').then((m) => ({
+    default: m.LeaveTypesPage,
+  })),
+);
+
+const LeaveRequestsPage = lazy(() =>
+  import('@modules/leave/pages/LeaveRequestsPage').then((m) => ({
+    default: m.LeaveRequestsPage,
+  })),
+);
+
+const LeaveBalancesPage = lazy(() =>
+  import('@modules/leave/pages/LeaveBalancesPage').then((m) => ({
+    default: m.LeaveBalancesPage,
+  })),
+);
+
+// AI module
+const AiAnalyticsPage = lazy(() =>
+  import('@modules/ai/pages/AiAnalyticsPage').then((m) => ({
+    default: m.AiAnalyticsPage,
+  })),
+);
+
 const NotFoundPage = lazy(() =>
   import('../pages/NotFoundPage').then((m) => ({ default: m.NotFoundPage })),
 );
@@ -95,6 +134,7 @@ export function AppRouter() {
         {/* ── Protected routes (redirect to login if not authenticated) ── */}
         <Route element={<ProtectedRoute />}>
           <Route
+            path="/*"
             element={
               <AppLayout>
                 {/* The Outlet rendered by ProtectedRoute is inside AppLayout */}
@@ -119,15 +159,25 @@ export function AppRouter() {
                       element={<EmployeeDetailPage />}
                     />
 
+                    {/* Organisation module */}
+                    <Route path={ROUTES.COMPANIES} element={<CompanyListPage />} />
+                    <Route path={ROUTES.DEPARTMENTS} element={<DepartmentListPage />} />
+
+                    {/* Leave module */}
+                    <Route path={ROUTES.LEAVE_TYPES} element={<LeaveTypesPage />} />
+                    <Route path={ROUTES.LEAVE_REQUESTS} element={<LeaveRequestsPage />} />
+                    <Route path={ROUTES.LEAVE_BALANCES} element={<LeaveBalancesPage />} />
+
+                    {/* AI module */}
+                    <Route path={ROUTES.AI_ANALYTICS} element={<AiAnalyticsPage />} />
+
                     {/* 404 within app */}
                     <Route path="*" element={<NotFoundPage />} />
                   </Routes>
                 </Suspense>
               </AppLayout>
             }
-          >
-            <Route path="/*" element={null} />
-          </Route>
+          />
         </Route>
 
         {/* ── Standalone 404 ── */}

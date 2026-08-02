@@ -38,6 +38,28 @@ export const endpoints = {
     delete: (id: string | number) => `/employees/${id}`,
     export: '/employees/export',
   },
+  organisations: {
+    companies: '/organisations/companies',
+    companyById: (id: string | number) => `/organisations/companies/${id}`,
+    departments: '/organisations/departments',
+    departmentById: (id: string | number) => `/organisations/departments/${id}`,
+  },
+  leave: {
+    types: '/leave/types',
+    typeById: (id: string | number) => `/leave/types/${id}`,
+    balances: '/leave/balances',
+    balanceById: (id: string | number) => `/leave/balances/${id}`,
+    balancesByEmployee: (empId: string | number) => `/leave/balances/employee/${empId}`,
+    requests: '/leave/requests',
+    requestById: (id: string | number) => `/leave/requests/${id}`,
+    cancelRequest: (id: string | number) => `/leave/requests/${id}/cancel`,
+  },
+  ai: {
+    analytics: '/ai/analytics',
+    analyticsById: (id: string | number) => `/ai/analytics/${id}`,
+    analyticsByTable: (name: string) => `/ai/analytics/table/${name}`,
+    syncCounts: '/ai/analytics/sync',
+  },
   departments: {
     list: '/departments',
     byId: (id: string | number) => `/departments/${id}`,

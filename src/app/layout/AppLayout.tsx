@@ -18,6 +18,12 @@ interface AppLayoutProps {
 const NAV_ITEMS = [
   { to: ROUTES.DASHBOARD, label: 'Dashboard', icon: '⊞' },
   { to: ROUTES.EMPLOYEES, label: 'Employees', icon: '👥' },
+  { to: ROUTES.COMPANIES, label: 'Companies', icon: '🏢' },
+  { to: ROUTES.DEPARTMENTS, label: 'Departments', icon: '🗂️' },
+  { to: ROUTES.LEAVE_TYPES, label: 'Leave Types', icon: '📋' },
+  { to: ROUTES.LEAVE_REQUESTS, label: 'Leave Requests', icon: '📅' },
+  { to: ROUTES.LEAVE_BALANCES, label: 'Leave Balances', icon: '⚖️' },
+  { to: ROUTES.AI_ANALYTICS, label: 'AI Analytics', icon: '🤖' },
   { to: ROUTES.SETTINGS, label: 'Settings', icon: '⚙️' },
 ] as const;
 

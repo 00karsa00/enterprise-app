@@ -81,7 +81,7 @@ const useEmployeeStoreInternal = create<EmployeeStoreState>()(
             mergedFilters,
           );
           set({
-            employees: result.data,
+            employees: result.items,
             pagination: {
               total: result.total,
               page: result.page,

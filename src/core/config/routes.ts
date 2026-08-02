@@ -31,6 +31,18 @@ export const ROUTES = {
   SETTINGS_SECURITY: '/settings/security',
   SETTINGS_NOTIFICATIONS: '/settings/notifications',
 
+  // Organisation module
+  COMPANIES: '/organisations/companies',
+  DEPARTMENTS: '/organisations/departments',
+
+  // Leave module
+  LEAVE_TYPES: '/leave/types',
+  LEAVE_REQUESTS: '/leave/requests',
+  LEAVE_BALANCES: '/leave/balances',
+
+  // AI module
+  AI_ANALYTICS: '/ai/analytics',
+
   // Admin
   ADMIN: '/admin',
   ADMIN_USERS: '/admin/users',
